@@ -1,6 +1,6 @@
 
 #!/usr/bin/env bash
-# condition message
+#condition message
 count=0
 while [ $((count++)) -lt 20 ]; do
 	echo $count
