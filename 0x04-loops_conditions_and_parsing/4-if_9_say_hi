@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Print string
+count=0
+while [ $((count++)) -lt 10 ]; do
+	echo Holberton School
+	if [ $count -eq 9 ]; then
+		echo Hi
+	fi
+done
