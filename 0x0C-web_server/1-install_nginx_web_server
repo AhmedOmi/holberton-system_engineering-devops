@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#install nginx to my server
+ssh ubuntu@34.73.17.45 "sudo apt-get -y update"
+ssh ubuntu@34.73.17.45 "sudo apt-get -y install nginx"
+ssh ubuntu@34.73.17.45 "sudo systemctl start nginx"
+ssh ubuntu@34.73.17.45 "sudo chown -R ubuntu:ubuntu /var/www"
+ssh ubuntu@34.73.17.45 "sudo echo 'Holberton School' > /var/www/html/index.ngin$
+ssh ubuntu@34.73.17.45 "sudo systemctl restart nginx"
