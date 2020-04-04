@@ -1,6 +1,3 @@
 #!/usr/bin/env bash
 #apache2
-sudo apt-get install apache2
-echo "Hello Holberton" >> /var/www/html/index.html 
-echo "ServerName localhost" >> /etc/apache2/apache2.conf
-/etc/init.d/apache2 start
+service apache2 start
