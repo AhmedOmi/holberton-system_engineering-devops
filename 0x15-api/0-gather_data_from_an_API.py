@@ -5,10 +5,10 @@ import sys
 if __name__ == '__main__':
     if len(sys.argv) == 2 and sys.argv[1].isdigit():
         arg = sys.argv[1]
-        req1 = requests.get('https://jsonplaceholder.typicode.com/todos')
-        req2 = requests.get('https://jsonplaceholder.typicode.com/users')
-        s = req1.json()
-        usr = req2.json()
+        res1 = requests.get('https://jsonplaceholder.typicode.com/todos')
+        res2 = requests.get('https://jsonplaceholder.typicode.com/users')
+        s = res1.json()
+        usr = res2.json()
         for y in usr:
             if y['id'] == int(arg):
                 user = y['name']
