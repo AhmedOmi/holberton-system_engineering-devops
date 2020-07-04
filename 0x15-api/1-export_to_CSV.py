@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Gather data from an API """
+"""Export to CSV """
+import csv
 import requests
 import sys
 if __name__ == '__main__':
@@ -12,6 +13,7 @@ if __name__ == '__main__':
         for y in usr:
             if y['id'] == int(arg):
                 user = y['name']
+                usern = y['username']
         Max = 0
         Done = 0
         titles = []
@@ -23,6 +25,13 @@ if __name__ == '__main__':
                         if key == 'completed' and value is True:
                             Done += 1
                             titles.append(i['title'])
-        print('Employee {} is done with tasks({}/{}):'.format(user, Done, Max))
-        for i in titles:
-            print('\t {}'.format(i))
+        with open('{}.csv'.format(int(arg)), 'w+') as f:
+            writer = csv.writer(f, delimiter=',',
+                                quotechar='"',
+                                quoting=csv.QUOTE_ALL)
+            for i in s:
+                for key, value in i.items():
+                    if key == 'userId' and value == int(arg):
+                        writer.writerow([int(arg),
+                                         usern, i['completed'],
+                                         i['title']])
