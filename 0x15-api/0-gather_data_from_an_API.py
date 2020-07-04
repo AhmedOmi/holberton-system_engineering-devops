@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+"""Gather data from an API"""
+import requests
+import sys
+if __name__ == '__main__':
+    if len(sys.argv) == 2 and sys.argv[1].isdigit():
+        arg = sys.argv[1]
+        req1 = requests.get('https://jsonplaceholder.typicode.com/todos')
+        req2 = requests.get('https://jsonplaceholder.typicode.com/users')
+        s = req1.json()
+        usr = req2.json()
+        for y in usr:
+            if y['id'] == int(arg):
+                user = y['name']
+        Max = 0
+        Done = 0
+        titles = []
+        for i in s:
+            for key, value in i.items():
+                if key == 'userId' and value == int(arg):
+                    Max += 1
+                    for key, value in i.items():
+                        if key == 'completed' and value is True:
+                            Done += 1
+                            titles.append(i['title'])
+        print('Employee {} is done with tasks({}/{}):'.format(user, Done, Max))
+        for i in titles:
+            print('\t {}'.format(i))
